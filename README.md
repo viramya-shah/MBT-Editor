@@ -13,7 +13,7 @@ This is **`model-based testing`** simple application integrated with **`pair-wis
 ### How to run:
 - Download [Node.js](https://nodejs.org/). This will also install `npm`.
 - Download/Clone this repository on your local machine
-  - For example : `git clone https://github.com/viramya-2018/mbt-editor.git`
+  - For example : `git clone https://github.com/viramya-shah/mbt-editor.git`
 - Move into the cloned repo
   - cd `mbt-editor`
 - Run `npm install`. This will install all the required packages.
