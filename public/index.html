@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Draw Diagram | Infostretch Labs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+    />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="./js/test.js"></script>
+    <script type="text/javascript" src="./js/mxClient.js"></script>
+    <script type="text/javascript" src="./js/custom_v1.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+</head>
+
+<body onload="main()">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="javascript:void(0)" title="">
+            <img src="images/infostretch_logo.svg" alt="logo" title="" />
+        </a>
+        <div class="logout">
+            <a href="javascript:void(0)" class="anim user-menu" title="">
+                <img src="images/user.jpg" alt="user" title="" />Logout
+            </a>
+        </div>
+    </nav>
+    <div class="topFilename">
+        <div class="tabFilename active">
+            <button type="button" id="file_label" class="btn">Diagram_Infostretch</button>
+            <span class="btn-close">
+                <a href="javascript:void(0)" title="" data-toggle="modal" data-target="#closFile">
+                    <i class="fas fa-times"></i>
+                </a>
+            </span>
+        </div>
+
+        <!--<div class="tabFilename">
+            <button type="button" class="btn">Diagram_Infostretch</button>
+            <span class="btn-close">
+                <a href="javascript:void(0)" title="">
+                    <i class="fas fa-times"></i>
+                </a>
+            </span>
+        </div>-->
+
+    </div>
+    <div class="submenu">
+        <div class="operations">
+            <div class="links">
+                <a href="javascript:void(0)" class="anim mr0" title="New" data-toggle="modal" data-target="#newfile">
+                    <span class="fas fa-file"></span>
+                </a>
+                <a id="open_btn" href="javascript:void(0)" class="anim mr0" title="Open" data-toggle="modal" data-target="#openfile">
+                    <span class="fas fa-folder-open"></span>
+                </a>
+                <a class="anim mr0" id="save_btn" title="Save" data-toggle="modal" data-target="#fileSaved">
+                    <span class="fas fa-save"></span>
+                </a>
+                <div class="saprator"></div>
+                <div class="drawIcons" id="products">
+                    <!--
+                        Dynamically added to the page
+                    -->
+                </div>
+            </div>
+        </div>
+        <div class="operations">
+            <div class="links">
+
+                <a id="undo" href="javascript:void(0)" class="anim" title="Undo">
+                    <span class="fas fa-undo"></span>
+                </a>
+                <a id="redo" href="javascript:void(0)" class="anim" title="Redo">
+                    <span class="fas fa-redo"></span>
+                </a>
+                <a id="zoomIn" href="javascript:void(0)" class="anim" title="Zoom In">
+                    <span class="fas fa-search-plus"></span>
+
+                </a>
+                <a id="zoomOut" href="javascript:void(0)" class="anim" title="Zoom Out">
+                    <span class="fas fa-search-minus"></span>
+                </a>
+                <a id="deleteCells" href="javascript:void(0)" class="anim" title="Delete">
+                    <span class="fas fa-trash-alt"></span>
+                </a>
+                <div class="saprator"></div>
+                <a id="GenerateCode" href="javascript:void(0)" class="anim mr0" title="Generate code">
+                    <span class="fas fa-file-code" data-toggle="modal" data-target="#generatecode"></span>
+                </a>
+                <a href="javascript:void(0)" id="download" class="anim" title="Download">
+                    <span class="fas fa-download"></span>
+                </a>
+                <div class="saprator"></div>
+                <form method="post" class="topsearch">
+                    <input type="search" placeholder="Search" class="searchexpand">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 pl-0 pr-0 ovh">
+                <div class="maincenter">
+                    <div class="centerimg" id="myGrid"></div>
+                </div>
+                <div class="propertiesSidebar">
+                    <a href="javascript:void(0)" class="control">
+                        <span class="fas fa-angle-left"></span>
+                    </a>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#tabJavadoc" role="tab" data-toggle="tab">General</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#tabProperties" role="tab" data-toggle="tab">Values</a>
+                        </li> -->
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active show" id="tabJavadoc">
+                            <div class="form-group">
+                                <label for="javacodeName">Name</label>
+                                <input type="text" class="form-control" id="javacodeName" aria-describedby="Javacode Name" placeholder="Name">
+                            </div>
+                            <div class="form-group ">
+                                <label for="javacodeDesc">Description</label>
+                                <textarea type="text" class="form-control" id="javacodeDesc" aria-describedby="Javacode Description" onfocusout="getParams()"
+                                    placeholder="Description"></textarea>
+                            </div>
+                            <!---<div class="form-group">
+                                <label for="javacodeDependency">Dependency</label>
+                                <input type="text" class="form-control" id="javacodeDependency" aria-describedby="Javacode Dependency" placeholder="Dependency">
+                            </div>-->
+                            <div class="form-check" id="shared_checkbox">
+                                <a onclick="shared_onclick()">
+                                    <input class="form-check-input" type="checkbox" value="" id="javacodeShared">
+                                </a>
+                                <a>
+                                    <label class="form-check-label" for="javacodeShared">Shared</label>
+                                </a>
+
+                            </div>
+
+                            <div>
+                                <div class="form-group" id="divmySharedFile">
+                                    <a>
+                                        <select id="mySharedFile" onchange="create_newfile()">
+                                            <!-- <option value=""></option>
+                                            <option value="New File" data-toggle="modal" data-target="#shared_newfile">New File</option> -->
+                                        </select>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Popup on selecting new file option while selectig shared file -->
+                            <div class="modal" id="shared_newfile">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header modalHeader">
+                                            <h4 class="modal-title modalTitle">Make New Shared File </h4>
+                                        </div>
+                                        <div class="modal-body p0">
+                                            <!-- <form method="post" action="/shared_new"> -->
+                                            <div class="p15">
+                                                <div class="form-group">
+                                                    <label for="shared_projectname">Project Name:</label>
+                                                    <input type="text" name="shared_projectname" class="form-control" id="shared_projectname" aria-describedby="Project Name"
+                                                        placeholder="Project Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="shared_filename">File Name:</label>
+                                                    <input type="text" name="shared_filename" class="form-control" id="shared_filename" aria-describedby="File Name" placeholder="File Name">
+                                                </div>
+                                            </div>
+                                            <div class="modalFooter">
+                                                <div class="popupbtn">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button onclick="save_shared()" type="submit" class="btn btn-secondary">Save</button>
+                                                    <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Don't Save </button>
+                                                </div>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div class="form-group" id="divDropBox">
+                                    <select id="myDropBox">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" id="javacodeValue" aria-describedby="Javacode Value" placeholder="Enter value"
+                                    onfocusout="addToValueMap()"></textarea>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-secondary">Done</button> -->
+                        </div>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab-pane fade" id="tabProperties">
+                            <div class="form-group">
+                                <label for="propertiesName">Name</label>
+                                <input type="text" class="form-control" id="propertiesName" aria-describedby="Properties Name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="propertiesDesc">Description</label>
+                                <textarea type="text" class="form-control" id="propertiesDesc" aria-describedby="Properties Description" placeholder="Description"></textarea>
+                            </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="modal" id="fileSaved">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <h4 class="modal-title modalTitle">File saved</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Files have been saved!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup on generate code -->
+    <div class="modal" id="generatecode">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <h4 class="modal-title modalTitle">Generate Code </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Files have been generated!
+                    </div>
+                    <div class="form-group">
+                        <label>Select main file:</label>
+                        <select class="form-control" id="generatecode_dropdown"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Value for Combinatorial Testing</label>
+                        <!-- <input type="text" class="form-control" placeholder="Enter N" id="generateCode_n"> -->
+                        <select class="form-control" id="generateCode_n">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                    <div class="modalFooter">
+                        <input type="button" value="Good to go!" class="btn btn-secondary" id="generateCodeGo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Popup on Close -->
+    <div class="modal" id="closFile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p0">
+                    <div class="p15">
+                        <h1 class="closrpopupTitle"> Would you like to save this file or cancel it?</h1>
+                    </div>
+                    <div class="modalFooter">
+                        <div class="popupbtn">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" id="Save_close" class="btn btn-secondary">Save </button>
+                            <button type="submit" id="Dont_Save_close" class="btn btn-secondary float-left">Close anyways!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup on newfile -->
+    <div class="modal" id="newfile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <h4 class="modal-title modalTitle">Make New File </h4>
+                </div>
+                <div class="modal-body p0">
+                    <form method="post" action="/new">
+                        <div class="p15">
+                            <div class="form-group">
+                                <label for="projectname">Project Name:</label>
+                                <input type="text" name="projectname" class="form-control" id="projectname" aria-describedby="Project Name" placeholder="Project Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="filename">File Name:</label>
+                                <input type="text" name="filename" class="form-control" id="filename" aria-describedby="File Name" placeholder="File Name">
+                            </div>
+                        </div>
+                        <div class="modalFooter">
+                            <div class="popupbtn">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-secondary">Save</button>
+                                <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Don't Save </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup on Open -->
+    <div class="modal" id="openfile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <h4 class="modal-title modalTitle">Open Folder </h4>
+                </div>
+                <div class="modal-body p0">
+                    <div class="p15">
+
+                        <div id="filelist" class="fileListing">
+                            <ul>
+                                <!--<<li>
+                                        <a href="javascript:void(0)" title="">
+                                            <span class="fas fa-folder"></span>
+                                            <span>My new Diagram</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="javascript:void(0)" title="">
+                                            <span class="fas fa-folder"></span>
+                                            <span> Insfostretch Diagram(28/02/2018)</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" title="">
+                                            <span class="fas fa-folder"></span>
+                                            <span>New Folder</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" title="">
+                                            <span class="fas fa-folder"></span>
+                                            <span>Diagram of Insfostretch</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" title="">
+                                            <span class="fas fa-folder"></span>
+                                            <span>New Diagram</span>
+                                        </a>
+                                    </li> -->
+                            </ul>
+
+                            <!--<ul>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>My new Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>Diagram(28/02/2018).xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                    <li><a href="javascript:void(0)" title=""> <span class="fas fa-file"></span> <span>New Diagram.xml</span></a></li>
+                                 </ul> -->
+
+                        </div>
+                    </div>
+                    <div class="modalFooter">
+                        <div class="popupbtn">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" id="btn_open_select" class="btn btn-secondary">Select </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.js"></script>
+    <script src="js/custom jquery v2.js"></script>
+</body>
+
+</html>

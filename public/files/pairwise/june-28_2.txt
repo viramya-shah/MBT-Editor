@@ -1,0 +1,16 @@
+Pairwise
+
+2_moreChoice	3_moremorechoice	
+ 0: ['mc21.mc22', 'mmc31']
+ 1: ['mc23', 'mmc31']
+ 2: ['mc24', 'mmc31']
+ 3: ['mc24', 'mmc32']
+ 4: ['mc23', 'mmc32']
+ 5: ['mc21.mc22', 'mmc32']
+ 6: ['mc21.mc22', 'mmc33']
+ 7: ['mc23', 'mmc33']
+ 8: ['mc24', 'mmc33']
+
+2_moreChoice	
+
+

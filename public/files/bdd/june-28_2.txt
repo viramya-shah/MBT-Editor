@@ -1,0 +1,26 @@
+BDD PATHS
+
+SCENARIO:
+ META-DATA: {'scenarioNumber': '0', 'description': 'Scenario #0', 'key': 'Scenario #0.testdata'}
+	Given at 2_choice
+	When $[2_moreChoice]
+	Then at 2_moreChoice
+	When $[3_moremorechoice]
+	Then at 3_moreMoreChoice
+END
+
+SCENARIO:
+ META-DATA: {'scenarioNumber': '0', 'description': 'Scenario #0', 'key': 'Scenario #0.testdata'}
+	Given at 2_choice
+	When $[2_moreChoice]
+	Then at 2_moreChoice
+	When Helped
+	Then God will help
+END
+END
+SCENARIO: 
+META-DATA: {'scenarioNumber': '1', 'description': 'Scenario #1', 'key': 'Scenario #1.testdata'}
+	Given at 2_choice
+	When Logging out
+	Then at 2_logout
+END

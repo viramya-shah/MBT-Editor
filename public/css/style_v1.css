@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* RESET CSS */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; margin: 0; padding: 0; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+/* RESET CSS */
+
+/* ::-moz-selection { color: #fff; background: transparent; }
+::selection { color: #fff; background: transparent; } */
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #888; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+* { outline: none; -webkit-font-smoothing: antialiased; align-self: flex-start !important; -moz-osx-font-smoothing: grayscale; }
+
+body { background: #ffffff; font-family: 'Source Sans Pro', sans-serif; font-weight: 400; color:#333333; font-size: 16px; line-height: 140%; }
+
+.anim { transition: all 0.4s ease; -webkit-transition: all 0.4s ease; -moz-transition: all 0.4s ease; -ms-transition: all 0.4s ease; }
+.oh:hover { opacity: 0.8; }
+
+.navbar { width: 100%; padding:15px; background: #ffffff; border-bottom: 1px solid #ddd; display: flex; justify-content:space-between; }
+.navbar-brand { width: 200px; }
+.navbar-brand img { max-width: 200px; max-height: 70px; }
+
+.navbar-nav { flex-flow: row wrap; margin: 10px 0; }
+.navbar-nav .nav-link { color: #333; border-radius: 4px; padding: 8px 10px !important; line-height: 100%; margin: 0 5px; }
+.navbar-nav .nav-link:hover { background: #2d353d;  color: #fff;}
+
+.submenu { width: 100%; display: flex; justify-content: space-between; padding:5px 15px; background: #f7f7f7; border-bottom: 1px solid #ddd; }
+.operations { display: flex; justify-content: flex-start; }
+.operations a { padding: 6px 8px; margin: 4px 5px; border-radius: 4px; color:#666; }
+.operations a:hover { background: #666; color: #fff; }
+
+.docName { padding: 5px; border-radius: 6px; margin: 7px 0; cursor: pointer; }
+.docName:hover { background: #ddd; }
+
+ 
+ #sidebar { position: relative; top: 0px; bottom: 0; left: 0; background: #2d353d; overflow: auto;   padding-bottom:3000px; margin-bottom: -3000px; } 
+
+ .nav-side-menu .brand { background-color: #23282e; line-height: 50px; display: block; text-align: center; font-size: 14px;  }
+ .nav-side-menu .toggle-btn { display: none; }
+ .nav-side-menu ul,
+ .nav-side-menu li { list-style: none; padding: 0px; margin: 0px;cursor: pointer; }
+  
+ .nav-side-menu ul :not(collapsed) .arrow,
+ .nav-side-menu li :not(collapsed) .arrow { padding-left: 10px; padding-right: 10px; vertical-align: middle; float: right; }
+
+ .iconli > li { display: inline-flex;}
+ .sideicon a > img { width: 45px; }
+ li.sideicon { padding: 10px 7px; margin-right: 3px; margin-top: 10px;}
+
+ .nav-side-menu ul .sub-menu li:before,  .nav-side-menu li .sub-menu li:before { padding-left: 10px; padding-right: 10px; vertical-align: middle; }
+ .nav-side-menu ul .active,  .nav-side-menu li .active { border-left: 3px solid #ee7203; background-color: #4f5b69; }  
+ .nav-side-menu ul .sub-menu li,
+ .nav-side-menu li .sub-menu li { background-color: #181c20; border: none; line-height: 28px; border-bottom: 1px solid #23282e; margin-left: 0px; }
+ .nav-side-menu ul .sub-menu li:hover,
+ .nav-side-menu li .sub-menu li:hover { background-color: #020203; }  
+ .nav-side-menu li { padding: 10px; margin-top: 10px;}
+ .nav-side-menu li a { color: #e1ffff; line-height: 0px !important;}
+ .nav-side-menu li a i { display: inline-flex; }
+ .nav-side-menu li a:hover { text-decoration: none !important; }   
+ .nav-side-menu .menu-list .menu-content { display: block; } 
+ .btn-secondary:hover { background: #606c79 !important;}
+
+ .form-search-feedback { position: absolute; z-index: 2; display: block; height: 34px; text-align: center; color: #aaa;   margin: 0px 8px;}
+ .searchtextbox{ padding: 4px 0px 4px 30px;}
+ .mtop30{ margin-top: 30px !important;}
+ .mtop50{ margin-top: 50px !important;}
+ .mbot50{ margin-bottom: 50px !important;}
+ .ml30{ margin-left: 30px;}
+ .mtopbot10{ margin-top: 10px; margin-bottom: 10px;}
+ .t3{ position: relative; top: 3px;}
+ .maincenter { height: 400px; overflow-y: scroll; overflow-x: auto;}
+ .centerimg {  height: 800px; width: 1500px; top: 2%; left: 0%; background-image: url(../images/grid.gif); background-position: center; position: relative; background-repeat: repeat;}
+ .downbox { margin-top: 25px;  }
+ .tabtext,.tabtext:hover { color: #ee7203; }
+ .nav-tabs { border-bottom: 1px solid #dee2e6; width: 100%; display: inline-block;}
+ .closeright{ position: relative; float: right; display: list-item;     width: 20px;}
+ .bortop{ border-top: 1px solid #424242;}
+
+ .btntools {    background: none;    border: none;}
+img.mxToolbarMode { width: 55px; line-height: 45px; background: #384048; padding: 8px; margin: 8px !important;}
+  
+.arrow { -moz-transition: all 1s ease; -webkit-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }  
+.up { transform: rotate(-90deg); -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -o-transform: rotate(-90deg); }  
+.down { transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); }
+.up1{ transform: rotate(-90deg); -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -o-transform: rotate(-90deg); }   
+.modal-header { width: 100%;}
+.btn-secondary {    color: #fff;    background-color: #4f5b69;    border-color: #4f5b69;}
+
+
+
+ 
